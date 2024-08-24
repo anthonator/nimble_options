@@ -12,6 +12,7 @@ defmodule NimbleOptions.ValidationError do
           key: atom(),
           keys_path: [atom()],
           redact: boolean,
+          type: {:required | :type, term()},
           value: term()
         }
 
@@ -29,7 +30,7 @@ defmodule NimbleOptions.ValidationError do
       was no value provided.
 
   """
-  defexception [:message, :key, :value, keys_path: [], redact: false]
+  defexception [:message, :key, :value, :type, keys_path: [], redact: false]
 
   @impl true
   def message(%__MODULE__{message: message, keys_path: keys_path}) do
